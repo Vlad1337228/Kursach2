@@ -1,0 +1,22 @@
+C:\Users\Pasha\source\repos\kursach_2\kursach_2\bin\Debug\kursach_2.exe.config
+C:\Users\Pasha\source\repos\kursach_2\kursach_2\bin\Debug\kursach_2.exe
+C:\Users\Pasha\source\repos\kursach_2\kursach_2\bin\Debug\kursach_2.pdb
+C:\Users\Pasha\source\repos\kursach_2\kursach_2\obj\Debug\kursach_2.csprojAssemblyReference.cache
+C:\Users\Pasha\source\repos\kursach_2\kursach_2\obj\Debug\kursach_2.Form1.resources
+C:\Users\Pasha\source\repos\kursach_2\kursach_2\obj\Debug\kursach_2.Properties.Resources.resources
+C:\Users\Pasha\source\repos\kursach_2\kursach_2\obj\Debug\kursach_2.csproj.GenerateResource.cache
+C:\Users\Pasha\source\repos\kursach_2\kursach_2\obj\Debug\kursach_2.csproj.CoreCompileInputs.cache
+C:\Users\Pasha\source\repos\kursach_2\kursach_2\obj\Debug\kursach_2.exe
+C:\Users\Pasha\source\repos\kursach_2\kursach_2\obj\Debug\kursach_2.pdb
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\bin\Debug\Database1.mdf
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\bin\Debug\Database1_log.ldf
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\bin\Debug\kursach_2.exe.config
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\bin\Debug\kursach_2.exe
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\bin\Debug\kursach_2.pdb
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\obj\Debug\kursach_2.csprojAssemblyReference.cache
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\obj\Debug\kursach_2.Form1.resources
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\obj\Debug\kursach_2.Properties.Resources.resources
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\obj\Debug\kursach_2.csproj.GenerateResource.cache
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\obj\Debug\kursach_2.csproj.CoreCompileInputs.cache
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\obj\Debug\kursach_2.exe
+D:\вуз\курсач\Курсовая 4 семестр\Kursach_2-master\kursach_2\obj\Debug\kursach_2.pdb
