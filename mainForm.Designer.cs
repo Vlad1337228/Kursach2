@@ -59,6 +59,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.filterBTN = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.exitBTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -214,15 +215,16 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(1114, 354);
             this.label2.TabIndex = 17;
+            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // enterBTN
             // 
             this.enterBTN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.enterBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.enterBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enterBTN.Location = new System.Drawing.Point(1021, 17);
+            this.enterBTN.Location = new System.Drawing.Point(962, 17);
             this.enterBTN.Name = "enterBTN";
-            this.enterBTN.Size = new System.Drawing.Size(75, 23);
+            this.enterBTN.Size = new System.Drawing.Size(60, 23);
             this.enterBTN.TabIndex = 18;
             this.enterBTN.Text = "Вход";
             this.enterBTN.UseVisualStyleBackColor = true;
@@ -367,9 +369,9 @@
             this.filterBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filterBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.filterBTN.ForeColor = System.Drawing.Color.White;
-            this.filterBTN.Location = new System.Drawing.Point(740, 200);
+            this.filterBTN.Location = new System.Drawing.Point(732, 200);
             this.filterBTN.Name = "filterBTN";
-            this.filterBTN.Size = new System.Drawing.Size(247, 46);
+            this.filterBTN.Size = new System.Drawing.Size(255, 46);
             this.filterBTN.TabIndex = 37;
             this.filterBTN.Text = "Поиск по фильтрам";
             this.filterBTN.UseVisualStyleBackColor = false;
@@ -385,11 +387,25 @@
             this.label9.Text = "Все предложения";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
+            // exitBTN
+            // 
+            this.exitBTN.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.exitBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.exitBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitBTN.Location = new System.Drawing.Point(1036, 17);
+            this.exitBTN.Name = "exitBTN";
+            this.exitBTN.Size = new System.Drawing.Size(60, 23);
+            this.exitBTN.TabIndex = 39;
+            this.exitBTN.Text = "Выход";
+            this.exitBTN.UseVisualStyleBackColor = true;
+            this.exitBTN.Click += new System.EventHandler(this.ExitBTN_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1108, 961);
+            this.Controls.Add(this.exitBTN);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.filterBTN);
             this.Controls.Add(this.textBox5);
@@ -447,7 +463,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button enterBTN;
         private System.Windows.Forms.Button submitBTN;
         private System.Windows.Forms.Button clearBTN;
         private System.Windows.Forms.Label label4;
@@ -462,7 +477,9 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button filterBTN;
-        private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.Button enterBTN;
+        public System.Windows.Forms.Button exitBTN;
     }
 }
 

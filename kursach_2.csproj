@@ -95,6 +95,7 @@
     <Compile Include="submitForm.Designer.cs">
       <DependentUpon>submitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="enterForm.resx">
       <DependentUpon>enterForm.cs</DependentUpon>
     </EmbeddedResource>

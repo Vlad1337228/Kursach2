@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,11 @@ namespace kursach_2
 {
     public partial class enterForm : Form
     {
-        public enterForm()
+        private  mainForm mainf=new mainForm();
+        public enterForm(mainForm mf)
         {
             InitializeComponent();
+            mainf = mf;
             passwordEnterTextBox.AutoSize = false;
             this.passwordEnterTextBox.Size = new Size(this.passwordEnterTextBox.Size.Width, 28);
             nubmerEnterTextBox.Text = "Номер телефона";
@@ -30,17 +33,77 @@ namespace kursach_2
             //this.Hide();
             //main.Show();
             
-            var telephone_number = nubmerEnterTextBox.Text;
+            var telephone_number_string = nubmerEnterTextBox.Text;
             var pass = passwordEnterTextBox.Text;
-            if(telephone_number!="Номер телефона" && pass!="Пароль")
+            
+            if(telephone_number_string!="Номер телефона" && pass!="Пароль")
             {
-
-                this.Close();
+                var telephjne_number_long = long.Parse(nubmerEnterTextBox.Text);
+                using (SqlCommand command = new SqlCommand("SELECT * FROM [user] WHERE telephone='" + telephjne_number_long + "' AND password='" + pass + "'" , mainForm.connection))
+                {
+                    mainForm.connection.Open();
+                    command.ExecuteNonQuery();
+                    SqlDataReader sqlDataReader = command.ExecuteReader();
+                    if( Check_Enter(sqlDataReader))
+                    {
+                        var user = new User();
+                        if(user.InPutUser(sqlDataReader))
+                        {
+                            mainForm.user = user;
+                            mainForm.flag = true;
+                            this.mainf.enterBTN.Visible = false;
+                            this.mainf.exitBTN.Visible = true;
+                            MessageBox.Show("Вы вошли.");
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        sqlDataReader.Close();
+                        mainForm.connection.Close();
+                        return;
+                    }
+                    sqlDataReader.Close();
+                    mainForm.connection.Close();
+                }
+                    this.Close();
             }
             else
             {
                 MessageBox.Show("Неправильный логин или пароль.");
             }
+        }
+
+
+        private int Count_SqlDataReader(SqlDataReader sql)
+        {
+            int i = 0;
+            while(sql.Read())
+            {
+                i++;
+                if (i > 2)
+                    break;
+            }
+            return i;
+        }
+        private bool Check_Enter(SqlDataReader sql)
+        {
+            if (!sql.HasRows)
+            {
+                MessageBox.Show("Пользователь не найден. Повторите попытку.");
+                return false;
+            }
+            else if (Count_SqlDataReader(sql) > 1)
+            {
+                MessageBox.Show("Ошибка системы. Кол-во строк: "+ sql.FieldCount);
+                return false;
+            }
+
+            return true;
+            
         }
 
         private void textBox1_Click(object sender, EventArgs e)

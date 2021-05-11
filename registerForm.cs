@@ -27,18 +27,23 @@ namespace kursach_2
             this.passwordBoxRegister.Size = new Size(this.passwordBoxRegister.Size.Width, 28);
 
         }
-        private bool Check(string s)
+        private bool Check(string s1,string s2, string s3 , string s4)
         {
             try
             {
-                long.Parse(s);
-                return true;
+                long.Parse(s1);
             }
             catch (Exception e)
             {
                 MessageBox.Show("Пожалуйста введите корректные данные в поле \"Номер телефона\"");
                 return false;
             }
+            if (s2.Length >= 30 || s3.Length >= 30 || s4.Length >= 20)
+            {
+                MessageBox.Show("Поля \"Имя\" \"Фамилия\" должны иметь не более 30 символов. Поле \"Пароль\" должно содержать не более 20 символов.");
+                return false;
+            }
+            return true;
         }
         private void registerBTN_Click(object sender, EventArgs e)
         {
@@ -46,11 +51,12 @@ namespace kursach_2
             var name = nameBoxRegister.Text;
             var telephone_number = numberBoxRegister.Text;
             var pass = passwordBoxRegister.Text;
-            if (Check(telephone_number))
+            
+            if (Check(telephone_number,second_name,name,pass))
             {
                 if (second_name != "Фамилия" && name != "Имя" && telephone_number != "Номер телефона" && pass != "Пароль")
                 {
-                    string s = "SELECT * FROM [user] WHERE telephone='" + long.Parse(telephone_number) + "' AND password='" + pass + "' AND name='" + name + "' AND second_name='" + second_name + "'";
+                    string s = "SELECT * FROM [user] WHERE telephone='" + long.Parse(telephone_number) + "' AND password='" + pass + "'";
                     using (SqlCommand command = new SqlCommand(s, mainForm.connection))
                     {
                         mainForm.connection.Open();
@@ -69,6 +75,7 @@ namespace kursach_2
                                 command1.Parameters.AddWithValue("@pass", pass);
                                 command1.ExecuteNonQuery();
                             }
+                            MessageBox.Show("Пользователь зарегестрирован.");
                             this.Close();
                         }
                         else

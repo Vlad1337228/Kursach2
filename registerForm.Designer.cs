@@ -122,6 +122,7 @@
             this.Controls.Add(this.secondNameBoxRegister);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(457, 489);
             this.MinimumSize = new System.Drawing.Size(457, 489);
             this.Name = "registerForm";
             this.Text = "registerForm";

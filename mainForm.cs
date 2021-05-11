@@ -15,13 +15,15 @@ namespace kursach_2
 {
     public partial class mainForm : Form
     {
+        public static User user;
         public static string connect_user= "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\вуз\\курсач\\Курсовая 4 семестр\\Курсач с интерфейсом\\Database2.mdf;Integrated Security=True";
-    //    public static string connect_auto = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\вуз\\курсач\\Курсовая 4 семестр\\Курсач с интерфейсом\\Database2.mdf;Integrated Security=True";
         public static SqlConnection connection=new SqlConnection(connect_user);
+        public static bool flag=false; // false=вышел , true = вошел
+
         public mainForm()
         {
             InitializeComponent();
-            //this.MaximizeBox = false;
+            this.exitBTN.Visible = false;
             clearBTN.FlatAppearance.BorderSize = 0;
             clearBTN.FlatStyle = FlatStyle.Flat;
             searchBTN.FlatAppearance.BorderSize = 0;
@@ -37,9 +39,9 @@ namespace kursach_2
 
         private void enterBTN_Click(object sender, EventArgs e)
         {
-            enterForm ent = new enterForm();
+            enterForm ent = new enterForm(this);
             ent.ShowDialog();
-
+            
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -52,6 +54,24 @@ namespace kursach_2
         private void SubmitBTN_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExitBTN_Click(object sender, EventArgs e)
+        {
+            user = null;
+            this.enterBTN.Visible = true;
+            this.exitBTN.Visible = false;
+            flag = false;
         }
     }
 }
