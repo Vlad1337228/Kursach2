@@ -47,7 +47,7 @@ namespace kursach_2
                     if( Check_Enter(sqlDataReader))
                     {
                         var user = new User();
-                        if(user.InPutUser(sqlDataReader))
+                        if(user.OutPutUser(sqlDataReader))
                         {
                             mainForm.user = user;
                             mainForm.flag = true;
@@ -78,17 +78,18 @@ namespace kursach_2
         }
 
 
-        private int Count_SqlDataReader(SqlDataReader sql)
-        {
-            int i = 0;
-            while(sql.Read())
-            {
-                i++;
-                if (i > 2)
-                    break;
-            }
-            return i;
-        }
+        //private int Count_SqlDataReader(SqlDataReader sql)
+        //{
+        //    int i = 0;
+        //    var sq = sql;
+        //    while(sq.Read())
+        //    {
+        //        i++;
+        //        if (i > 2)
+        //            break;
+        //    }
+        //    return i;
+        //}
         private bool Check_Enter(SqlDataReader sql)
         {
             if (!sql.HasRows)
@@ -96,12 +97,15 @@ namespace kursach_2
                 MessageBox.Show("Пользователь не найден. Повторите попытку.");
                 return false;
             }
-            else if (Count_SqlDataReader(sql) > 1)
-            {
-                MessageBox.Show("Ошибка системы. Кол-во строк: "+ sql.FieldCount);
-                return false;
-            }
-
+            //else
+            //{
+            //    var n = Count_SqlDataReader(sql);
+            //    if (n> 1)
+            //    {
+            //        MessageBox.Show("Ошибка системы. Кол-во строк: " + n);
+            //        return false;
+            //    }
+            //}
             return true;
             
         }
@@ -109,6 +113,7 @@ namespace kursach_2
         private void textBox1_Click(object sender, EventArgs e)
         {
             registerForm r1 = new registerForm();
+            mainForm._registerForm = r1;
             this.Hide();
             r1.ShowDialog();
         }

@@ -169,6 +169,9 @@ namespace kursach_2
             }
         }
 
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

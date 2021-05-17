@@ -16,13 +16,22 @@ namespace kursach_2
     public partial class mainForm : Form
     {
         public static User user;
+
+        public static enterForm _enterForm;
+        public static filterCars _filterCars;
+        public static mainForm _mainForm;
+        public static submitForm _submitForm;
+        public static registerForm _registerForm;
+
         public static string connect_user= "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\вуз\\курсач\\Курсовая 4 семестр\\Курсач с интерфейсом\\Database2.mdf;Integrated Security=True";
         public static SqlConnection connection=new SqlConnection(connect_user);
         public static bool flag=false; // false=вышел , true = вошел
 
         public mainForm()
         {
+            
             InitializeComponent();
+            _mainForm = this;
             this.exitBTN.Visible = false;
             clearBTN.FlatAppearance.BorderSize = 0;
             clearBTN.FlatStyle = FlatStyle.Flat;
@@ -40,6 +49,7 @@ namespace kursach_2
         private void enterBTN_Click(object sender, EventArgs e)
         {
             enterForm ent = new enterForm(this);
+            _enterForm = ent;
             ent.ShowDialog();
             
         }
@@ -47,13 +57,22 @@ namespace kursach_2
         private void label9_Click(object sender, EventArgs e)
         {
             filterCars c1 = new filterCars();
+            _filterCars = c1;
             this.Hide();
             c1.Show();
         }
 
         private void SubmitBTN_Click(object sender, EventArgs e)
         {
-
+            if (mainForm.user == null)
+            {
+                MessageBox.Show("Войдите в аккаунт.");
+                return;
+            }
+            
+            submitForm sf = new submitForm();
+            _submitForm = sf;
+            sf.ShowDialog();
         }
 
         private void Label2_Click(object sender, EventArgs e)
@@ -74,4 +93,6 @@ namespace kursach_2
             flag = false;
         }
     }
+
+   
 }
