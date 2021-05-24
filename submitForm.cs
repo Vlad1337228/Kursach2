@@ -89,6 +89,7 @@ namespace kursach_2
                 return;
             }
             InPutAytoInDB();
+            mainForm._mainForm.deleteAuto.Visible = true;
             return;
         }
 
@@ -107,7 +108,15 @@ namespace kursach_2
               command1.Parameters.AddWithValue("@transmission", a.transmission);
               command1.Parameters.AddWithValue("@new_or_old",a.new_or_old );
               command1.Parameters.AddWithValue("@price",a.price );
-              command1.ExecuteNonQuery();
+                try
+                {
+                    command1.ExecuteNonQuery();
+                }
+              catch(Exception e)
+                {
+                    MessageBox.Show("У вас уже есть одно выставленное объявление. Пожалуйста удалите старое,чтобы выставить новое.");
+                    return;
+                }
            }
             mainForm.connection.Close();
             MessageBox.Show("Объявление добавлено.");
@@ -149,7 +158,16 @@ namespace kursach_2
                 MessageBox.Show("Введите корректные данные в поле \"Год выпуска\"");
                 return (default(DateTime), false);
             }
-            DateTime dt = new DateTime(n1,n2,n3);
+            DateTime dt =new DateTime();
+            try
+            {
+                 dt = new DateTime(n1, n2, n3);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Введите корректные данные в поле \"Год выпуска\"");
+                return (dt, false);
+            }
             return (dt,true);
         }
         

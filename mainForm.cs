@@ -22,7 +22,7 @@ namespace kursach_2
         public static mainForm _mainForm;
         public static submitForm _submitForm;
         public static registerForm _registerForm;
-
+        public static List<Auto> list_auto;
         public static string connect_user= "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\вуз\\курсач\\Курсовая 4 семестр\\Курсач с интерфейсом\\Database2.mdf;Integrated Security=True";
         public static SqlConnection connection=new SqlConnection(connect_user);
         public static bool flag=false; // false=вышел , true = вошел
@@ -33,6 +33,7 @@ namespace kursach_2
             InitializeComponent();
             _mainForm = this;
             this.exitBTN.Visible = false;
+            this.deleteAuto.Visible = false;
             clearBTN.FlatAppearance.BorderSize = 0;
             clearBTN.FlatStyle = FlatStyle.Flat;
             searchBTN.FlatAppearance.BorderSize = 0;
@@ -90,7 +91,27 @@ namespace kursach_2
             user = null;
             this.enterBTN.Visible = true;
             this.exitBTN.Visible = false;
+            this.deleteAuto.Visible = false;
             flag = false;
+        }
+
+        private void DeleteAuto_Click(object sender, EventArgs e)
+        {
+            using (SqlCommand command = new SqlCommand("DELETE FROM [auto] WHERE id=" + user.auto.id, mainForm.connection))
+            {
+                mainForm.connection.Open();
+                command.ExecuteNonQuery();
+                SqlDataReader sqlDataReader = command.ExecuteReader();
+                sqlDataReader.Close();
+            }
+            deleteAuto.Visible = false;
+            mainForm.connection.Close();
+        }
+
+        private void FilterBTN_Click(object sender, EventArgs e)
+        {
+            _filterCars = new filterCars();
+            _filterCars.ShowDialog();
         }
     }
 

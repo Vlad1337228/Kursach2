@@ -13,7 +13,7 @@ namespace kursach_2
 {
     public partial class enterForm : Form
     {
-        private  mainForm mainf=new mainForm();
+        private mainForm mainf = mainForm._mainForm;
         public enterForm(mainForm mf)
         {
             InitializeComponent();
@@ -29,22 +29,26 @@ namespace kursach_2
 
         private void enterButton_Click(object sender, EventArgs e)
         {
-            //mainForm main = new mainForm();
-            //this.Hide();
-            //main.Show();
-            
             var telephone_number_string = nubmerEnterTextBox.Text;
             var pass = passwordEnterTextBox.Text;
-            
-            if(telephone_number_string!="Номер телефона" && pass!="Пароль")
+            long telephjne_number_long=0;
+            if (telephone_number_string!="Номер телефона" && pass!="Пароль")
             {
-                var telephjne_number_long = long.Parse(nubmerEnterTextBox.Text);
+                try
+                {
+                     telephjne_number_long = long.Parse(nubmerEnterTextBox.Text);
+                }
+                catch(Exception exce)
+                {
+                    MessageBox.Show("Заполните поле \"Номер телефона\" корректно.");
+                    return;
+                }
                 using (SqlCommand command = new SqlCommand("SELECT * FROM [user] WHERE telephone='" + telephjne_number_long + "' AND password='" + pass + "'" , mainForm.connection))
                 {
                     mainForm.connection.Open();
                     command.ExecuteNonQuery();
                     SqlDataReader sqlDataReader = command.ExecuteReader();
-                    if( Check_Enter(sqlDataReader))
+                    if( Check_RowsInDB(sqlDataReader))
                     {
                         var user = new User();
                         if(user.OutPutUser(sqlDataReader))
@@ -53,15 +57,19 @@ namespace kursach_2
                             mainForm.flag = true;
                             this.mainf.enterBTN.Visible = false;
                             this.mainf.exitBTN.Visible = true;
+                            sqlDataReader.Close();
+                            mainForm.connection.Close();
+                            if (Check_Auto(user.id))
+                            {
+                                Out_Auto(user.id);
+                            }
                             MessageBox.Show("Вы вошли.");
                         }
-                        else
-                        {
-                            return;
-                        }
+
                     }
                     else
                     {
+                        MessageBox.Show("Пользователь не найден. Повторите попытку.");
                         sqlDataReader.Close();
                         mainForm.connection.Close();
                         return;
@@ -77,35 +85,55 @@ namespace kursach_2
             }
         }
 
+        private void Out_Auto(int id)
+        {
+            using (SqlCommand command = new SqlCommand("SELECT * FROM [auto] WHERE id=" + id, mainForm.connection))
+            {
+                mainForm.connection.Open();
+                command.ExecuteNonQuery();
+                SqlDataReader sqlDataReader = command.ExecuteReader();
+                Auto auto = new Auto();
+                if (auto.OutPutAuto(sqlDataReader))
+                {
+                    mainForm.user.auto = auto;
+                    mainForm._mainForm.deleteAuto.Visible = true;
+                }
+                sqlDataReader.Close();
+            }
+            
+            mainForm.connection.Close();
+        }
 
-        //private int Count_SqlDataReader(SqlDataReader sql)
-        //{
-        //    int i = 0;
-        //    var sq = sql;
-        //    while(sq.Read())
-        //    {
-        //        i++;
-        //        if (i > 2)
-        //            break;
-        //    }
-        //    return i;
-        //}
-        private bool Check_Enter(SqlDataReader sql)
+        private bool Check_Auto(int id)
+        {
+            using (SqlCommand command = new SqlCommand("SELECT * FROM [auto] WHERE id="+id, mainForm.connection))
+            {
+                mainForm.connection.Open();
+                command.ExecuteNonQuery();
+                SqlDataReader sqlDataReader = command.ExecuteReader();
+
+                if (Check_RowsInDB(sqlDataReader))
+                {
+                    sqlDataReader.Close();
+                    mainForm.connection.Close();
+                    return true;
+                }
+                else
+                {
+                    sqlDataReader.Close();
+                    mainForm.connection.Close();
+                    return false;
+                }
+            }
+        }
+
+       
+        private bool Check_RowsInDB(SqlDataReader sql)
         {
             if (!sql.HasRows)
             {
-                MessageBox.Show("Пользователь не найден. Повторите попытку.");
                 return false;
             }
-            //else
-            //{
-            //    var n = Count_SqlDataReader(sql);
-            //    if (n> 1)
-            //    {
-            //        MessageBox.Show("Ошибка системы. Кол-во строк: " + n);
-            //        return false;
-            //    }
-            //}
             return true;
             
         }

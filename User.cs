@@ -21,16 +21,6 @@ namespace kursach_2
         {
             try
             {
-                //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-                //sqlDataAdapter.SelectCommand = sql;
-                //DataTable dt = new DataTable();
-                //sqlDataAdapter.
-                //sqlDataAdapter.Fill(dt);
-                //this.id = int.Parse(sql.GetString(0));
-                //this.telephone = long.Parse(sql.GetString(1));
-                //this.password = sql.GetString(2);
-                //this.name = sql.GetString(3);
-                //this.second_name = sql.GetString(4);
                 sql.Read();
                 this.id = (Int32)sql.GetValue(0);
                 this.telephone = (long)sql.GetValue(1);

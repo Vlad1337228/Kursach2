@@ -25,9 +25,9 @@ namespace kursach_2
                 this.mark= (string)sql.GetValue(2);
                 this.relise = (DateTime)sql.GetValue(3);
                 this.hourse_power = (int)sql.GetValue(4);
-                this.transmission = sql.GetValue(6).ToString();
-                this.new_or_old = sql.GetValue(7).ToString();
-                this.price = (int)sql.GetValue(8);
+                this.transmission = sql.GetValue(5).ToString();
+                this.new_or_old = sql.GetValue(6).ToString();
+                this.price = (int)sql.GetValue(7);
 
                 return true;
             }
