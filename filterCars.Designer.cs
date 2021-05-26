@@ -50,15 +50,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.carLabel_1 = new System.Windows.Forms.Label();
-            this.carLabel_2 = new System.Windows.Forms.Label();
-            this.carLabel_3 = new System.Windows.Forms.Label();
-            this.carLabel_4 = new System.Windows.Forms.Label();
-            this.carLabel_5 = new System.Windows.Forms.Label();
-            this.carLabel_6 = new System.Windows.Forms.Label();
             this.numOfPageRight = new System.Windows.Forms.PictureBox();
             this.numOfPageLeft = new System.Windows.Forms.PictureBox();
-            this.label22 = new System.Windows.Forms.Label();
+            this.page_number = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -72,6 +66,10 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.infoCar1 = new System.Windows.Forms.Label();
+            this.infoCar2 = new System.Windows.Forms.Label();
+            this.infoCar3 = new System.Windows.Forms.Label();
+            this.infoCar4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numOfPageRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOfPageLeft)).BeginInit();
             this.SuspendLayout();
@@ -195,6 +193,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1800, 390);
             this.label1.TabIndex = 1;
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // label4
             // 
@@ -283,61 +282,13 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(609, 286);
+            this.button1.Location = new System.Drawing.Point(609, 292);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(325, 35);
             this.button1.TabIndex = 26;
             this.button1.Text = "Поиск по фильтрам";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // carLabel_1
-            // 
-            this.carLabel_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.carLabel_1.Location = new System.Drawing.Point(12, 410);
-            this.carLabel_1.Name = "carLabel_1";
-            this.carLabel_1.Size = new System.Drawing.Size(850, 150);
-            this.carLabel_1.TabIndex = 28;
-            // 
-            // carLabel_2
-            // 
-            this.carLabel_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.carLabel_2.Location = new System.Drawing.Point(12, 574);
-            this.carLabel_2.Name = "carLabel_2";
-            this.carLabel_2.Size = new System.Drawing.Size(850, 150);
-            this.carLabel_2.TabIndex = 29;
-            // 
-            // carLabel_3
-            // 
-            this.carLabel_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.carLabel_3.Location = new System.Drawing.Point(12, 740);
-            this.carLabel_3.Name = "carLabel_3";
-            this.carLabel_3.Size = new System.Drawing.Size(850, 150);
-            this.carLabel_3.TabIndex = 30;
-            // 
-            // carLabel_4
-            // 
-            this.carLabel_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.carLabel_4.Location = new System.Drawing.Point(918, 410);
-            this.carLabel_4.Name = "carLabel_4";
-            this.carLabel_4.Size = new System.Drawing.Size(850, 150);
-            this.carLabel_4.TabIndex = 31;
-            // 
-            // carLabel_5
-            // 
-            this.carLabel_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.carLabel_5.Location = new System.Drawing.Point(918, 574);
-            this.carLabel_5.Name = "carLabel_5";
-            this.carLabel_5.Size = new System.Drawing.Size(850, 150);
-            this.carLabel_5.TabIndex = 32;
-            // 
-            // carLabel_6
-            // 
-            this.carLabel_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.carLabel_6.Location = new System.Drawing.Point(918, 740);
-            this.carLabel_6.Name = "carLabel_6";
-            this.carLabel_6.Size = new System.Drawing.Size(850, 150);
-            this.carLabel_6.TabIndex = 33;
             // 
             // numOfPageRight
             // 
@@ -348,6 +299,7 @@
             this.numOfPageRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.numOfPageRight.TabIndex = 35;
             this.numOfPageRight.TabStop = false;
+            this.numOfPageRight.Click += new System.EventHandler(this.NumOfPageRight_Click);
             // 
             // numOfPageLeft
             // 
@@ -358,16 +310,17 @@
             this.numOfPageLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.numOfPageLeft.TabIndex = 36;
             this.numOfPageLeft.TabStop = false;
+            this.numOfPageLeft.Click += new System.EventHandler(this.NumOfPageLeft_Click);
             // 
-            // label22
+            // page_number
             // 
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label22.Location = new System.Drawing.Point(869, 895);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(43, 35);
-            this.label22.TabIndex = 37;
-            this.label22.Text = "1";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.page_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.page_number.Location = new System.Drawing.Point(869, 895);
+            this.page_number.Name = "page_number";
+            this.page_number.Size = new System.Drawing.Size(43, 35);
+            this.page_number.TabIndex = 37;
+            this.page_number.Text = "1";
+            this.page_number.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // checkBox3
             // 
@@ -514,12 +467,54 @@
             this.label21.Size = new System.Drawing.Size(325, 1);
             this.label21.TabIndex = 51;
             // 
+            // infoCar1
+            // 
+            this.infoCar1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.infoCar1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoCar1.Location = new System.Drawing.Point(12, 393);
+            this.infoCar1.Name = "infoCar1";
+            this.infoCar1.Size = new System.Drawing.Size(321, 467);
+            this.infoCar1.TabIndex = 52;
+            this.infoCar1.Click += new System.EventHandler(this.InfoCar1_Click);
+            // 
+            // infoCar2
+            // 
+            this.infoCar2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.infoCar2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoCar2.Location = new System.Drawing.Point(501, 393);
+            this.infoCar2.Name = "infoCar2";
+            this.infoCar2.Size = new System.Drawing.Size(321, 467);
+            this.infoCar2.TabIndex = 53;
+            this.infoCar2.Click += new System.EventHandler(this.Label24_Click);
+            // 
+            // infoCar3
+            // 
+            this.infoCar3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.infoCar3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoCar3.Location = new System.Drawing.Point(958, 393);
+            this.infoCar3.Name = "infoCar3";
+            this.infoCar3.Size = new System.Drawing.Size(321, 467);
+            this.infoCar3.TabIndex = 54;
+            // 
+            // infoCar4
+            // 
+            this.infoCar4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.infoCar4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoCar4.Location = new System.Drawing.Point(1447, 393);
+            this.infoCar4.Name = "infoCar4";
+            this.infoCar4.Size = new System.Drawing.Size(321, 467);
+            this.infoCar4.TabIndex = 55;
+            // 
             // filterCars
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1780, 957);
+            this.Controls.Add(this.infoCar4);
+            this.Controls.Add(this.infoCar3);
+            this.Controls.Add(this.infoCar2);
+            this.Controls.Add(this.infoCar1);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.textBox11);
             this.Controls.Add(this.textBox10);
@@ -533,15 +528,9 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.label22);
+            this.Controls.Add(this.page_number);
             this.Controls.Add(this.numOfPageLeft);
             this.Controls.Add(this.numOfPageRight);
-            this.Controls.Add(this.carLabel_6);
-            this.Controls.Add(this.carLabel_5);
-            this.Controls.Add(this.carLabel_4);
-            this.Controls.Add(this.carLabel_3);
-            this.Controls.Add(this.carLabel_2);
-            this.Controls.Add(this.carLabel_1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -598,15 +587,9 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label carLabel_1;
-        private System.Windows.Forms.Label carLabel_2;
-        private System.Windows.Forms.Label carLabel_3;
-        private System.Windows.Forms.Label carLabel_4;
-        private System.Windows.Forms.Label carLabel_5;
-        private System.Windows.Forms.Label carLabel_6;
         private System.Windows.Forms.PictureBox numOfPageRight;
         private System.Windows.Forms.PictureBox numOfPageLeft;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label page_number;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.Label label15;
@@ -620,5 +603,9 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label infoCar1;
+        private System.Windows.Forms.Label infoCar2;
+        private System.Windows.Forms.Label infoCar3;
+        private System.Windows.Forms.Label infoCar4;
     }
 }
